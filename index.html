@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar & Section</title>
+    <style>
+        :root {
+            --900: #101211;
+            --100: white;
+            --accent-light: #fff0d1;
+            --400: #dbdbdb;
+            --700: #202221;
+            --600: #2e3130;
+            --300: #ebebeb;
+            --800: #171918;
+            --accent: #921dbc;
+            --200: #f7f7f7;
+            --accent-medium: #ffda8f;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Switzer, sans-serif;
+        }
+
+        body {
+            background-color: var(--900);
+            color: var(--100);
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 4.5rem;
+            padding: 0 2rem;
+            background: var(--900);
+            backdrop-filter: blur(0.375rem);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--100);
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+       .button-group {
+    display: flex;
+    gap: 10px;
+}
+
+.actions-wrapper{
+    display: flex;
+    gap: 10px;
+}
+
+.button, .button-secondary {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    border: none;
+}
+
+.button {
+    background-color: #4F46E5;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.button-secondary {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.button:hover, .button-secondary:hover {
+    transform: scale(1.05);
+}
+
+/* Shine Effect */
+.button::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    top: 0;
+    left: -100%;
+    transition: left 0.3s ease-in-out;
+}
+
+.button:hover::after {
+    left: 100%;
+}
+
+/* Arrow Animation */
+.button .icon {
+    display: inline-flex;
+    margin-left: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.button:hover .icon {
+    transform: translateX(5px);
+}
+
+        .section {
+            display: block;
+            padding: 1rem 5rem;
+            overflow: hidden;
+        }
+
+        .container-large {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-layout {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* gap: 2rem; */
+        }
+
+        .header-content {
+            max-height: 50%;
+            max-width: 40%;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .hero-image {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .heading.extra-large {
+    font-size: 2.5rem; /* Adjust as needed */
+    font-weight: bold;
+    background: linear-gradient(to left, #7915aa, white);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* display: inline-block; */
+    font-family: Arial, sans-serif; 
+}
+
+    .hero-image {
+        width: 100%; /* Adjust the size as needed */
+        max-width: 600px; /* Ensures it doesn’t get too large */
+        border-radius: 20px; /* Makes the corners rounded */
+        display: block;
+        margin: 0 auto; /* Centers the image */
+        
+    }
+
+
+
+
+
+
+
+    .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 320px;
+    border-radius: 24px;
+    line-height: 1.6;
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 36px;
+    border-radius: 22px;
+    color: #ffffff;
+    overflow: hidden;
+    background: #0a3cff;
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .content::before {
+    position: absolute;
+    content: "";
+    top: -4%;
+    left: 50%;
+    width: 90%;
+    height: 90%;
+    transform: translate(-50%);
+    background: #ced8ff;
+    z-index: -1;
+    transform-origin: bottom;
+    border-radius: inherit;
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .content::after {
+    position: absolute;
+    content: "";
+    top: -8%;
+    left: 50%;
+    width: 80%;
+    height: 80%;
+    transform: translate(-50%);
+    background: #e7ecff;
+    z-index: -2;
+    transform-origin: bottom;
+    border-radius: inherit;
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .content svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .content .para {
+    z-index: 1;
+    opacity: 1;
+    font-size: 18px;
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .content .link {
+    z-index: 1;
+    color: #fea000;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 16px;
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .content .link:hover {
+    text-decoration: underline;
+  }
+
+  .card:hover {
+    transform: translate(0px, -16px);
+  }
+
+  .card:hover .content::before {
+    rotate: -8deg;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .card:hover .content::after {
+    rotate: 8deg;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+
+
+
+  
+
+
+
+body {
+    background-color: #111;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    cursor: url('bot-cursor.png') 16 16, auto; /* Replace with actual path */
+}
+
+.section {
+    padding: 20px 0;
+}
+
+.container-large {
+    width: 70%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.text-gradient-overlay {
+    background: linear-gradient(90deg, #fff, #7915aa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.card-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.card-item {
+    background-color: #181818;
+    padding: 24px;
+    border-radius: 12px;
+    text-align: left;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    min-height: 200px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: url('bot-cursor-hover.png') 16 16, pointer; /* Hover cursor */
+}
+
+.card-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 15px rgba(255, 255, 255, 0.2);
+}
+
+.card-item:nth-child(1) {
+    min-height: 260px;
+}
+
+.card-item:nth-child(2) {
+    min-height: 220px;
+}
+
+.card-item:nth-child(3) {
+    min-height: 280px;
+}
+
+.card-item:nth-child(4) {
+    min-height: 240px;
+}
+
+.icon-large {
+    width: 32px;
+    height: 32px;
+    filter: invert(76%) sepia(36%) saturate(600%) hue-rotate(10deg);
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-top: 16px;
+}
+
+.paragraph {
+    font-size: 1rem;
+    color: #bbb;
+    margin-top: 8px;
+}
+
+.spacer-128, .spacer-32, .spacer-16, .spacer-80 {
+    display: none;
+}
+
+  
+
+
+        
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <div class="nav-container">
+            <div class="logo-wrapper">
+                <a href="/" class="logo">
+                    <img src="https://cdn.prod.website-files.com/67066dfc1c57408478acabb1/67066dfc1c57408478acac6c_torch-logo.svg" alt="Logo" width="Auto" height="24">
+                </a>
+            </div>
+            <nav class="nav-menu">
+                <a href="/features" class="nav-link">Features</a>
+                <a href="/pricing" class="nav-link">Pricing</a>
+                <a href="/about" class="nav-link">About</a>
+                <a href="/contact" class="nav-link">Contact</a>
+            </nav>
+            <div class="actions-wrapper">
+                <a href="/sign-in" class="button-secondary">Sign in</a>
+                <a href="#" class="button">Get started</a>
+            </div>
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="container-large">
+            <div class="header-layout">
+                <div class="header-content">
+                    <h1 class="heading extra-large">Transparent & Secure Medicine Supply Chain</h1>
+                    <p class="paragraph large">Manage and monitor medicines from manufacturing to delivery with real-time tracking, immutable records, and automated quality checks. Prevents counterfeits, enhance transparency, and builds trust in the healthcare system.</p>
+                    <div class="button-group">
+                        <a href="#" class="button">
+                            Get started
+                            <div class="icon">
+                                <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" 
+                                          fill="currentColor"></path>
+                                </svg>
+                            </div>
+                        </a>
+                        <a href="#learn-more" class="button-secondary">Learn more</a>
+                    </div>
+                    
+                </div>
+                <div class="image-wrapper">
+                    <img class="hero-image" src="purpleimage.png" alt="Product image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section">
+        <div id="learn-more" class="container-large">
+          <h2 class="heading large">
+            <span class="text-gradient-overlay">Take action from insights</span>
+          </h2>
+          <div class="spacer-80"></div>
+          <div class="w-layout-grid card-list">
+            
+            <div id="w-node-_38f718e7-ef7d-cf1b-5d32-9110617504c1-617504ba" class="card-item">
+              <img 
+                src="https://cdn.prod.website-files.com/67066dfc1c57408478acabb1/67066dfc1c57408478acac62_layout-dashboard.svg" 
+                loading="lazy" 
+                alt="Dashboard icon" 
+                class="icon-large"
+              >
+              <div class="spacer-128"></div>
+              <h3 class="heading medium">Real-time Inventory Tracking</h3>
+              <div class="spacer-16"></div>
+              <p class="paragraph">
+                Monitor medicine stock levels across the supply chain with real-time updates. Prevent shortages and overstocking with automated alerts.              </p>
+            </div>
+      
+            <div class="card-item">
+              <img 
+                src="https://cdn.prod.website-files.com/67066dfc1c57408478acabb1/67066dfc1c57408478acac5f_radar.svg" 
+                loading="lazy" 
+                alt="Radar icon" 
+                class="icon-large"
+              >
+              <div class="spacer-32"></div>
+              <h3 class="heading medium">Quality Assurance & Compliance</h3>
+              <div class="spacer-16"></div>
+              <p class="paragraph">
+                Ensure medicines meet regulatory standards using IoT and blockchain verification. Track batch numbers, expiry dates, and environmental conditions.              </p>
+            </div>
+      
+            <div id="w-node-d05e47e2-aa32-2547-947a-66fd2ccb7be0-617504ba" class="card-item">
+              <img 
+                src="https://cdn.prod.website-files.com/67066dfc1c57408478acabb1/67066dfc1c57408478acac61_wand-sparkles.svg" 
+                loading="lazy" 
+                alt="Magic icon" 
+                class="icon-large"
+              >
+              <div class="spacer-128"></div>
+              <h3 class="heading medium"> Automated Supply Chain Reports</h3>
+              <div class="spacer-16"></div>
+              <p class="paragraph">
+                Receive automated reports on inventory movement, supplier performance, and quality checks. Improve decision-making with actionable insights.              </p>
+            </div>
+      
+            <div class="card-item">
+              <img 
+                src="https://cdn.prod.website-files.com/67066dfc1c57408478acabb1/67066dfc1c57408478acac60_mouse-pointer-click.svg" 
+                loading="lazy" 
+                alt="Mouse icon" 
+                class="icon-large"
+              >
+              <div class="spacer-32"></div>
+              <h3 class="heading medium">Secure & Transparent Collaboration</h3>
+              <div class="spacer-16"></div>
+              <p class="paragraph">
+                Enable seamless communication between hospitals, suppliers, and regulators. Blockchain-powered tracking ensures transparency and trust in the supply chain.              </p>
+            </div>
+      
+          </div>
+        </div>
+      </section>
+      
+      
+      
+
+    
+
+
+</body>
+</html>
